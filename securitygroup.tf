@@ -21,6 +21,6 @@ resource "aws_security_group" "sg-custom_us_east" {
     command = "echo ${aws_security_group.sg-custom_us_east.ingres} >> my_cidr_ips.txt"
   }
 }
-output "public_ip" {
+output "ingres" {
   value = aws_security_group.sg-custom_us_east.ingress
 }
