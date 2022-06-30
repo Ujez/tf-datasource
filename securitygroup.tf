@@ -11,10 +11,11 @@ resource "aws_security_group" "sg-custom_us_east" {
     to_port     = "443"
     protocol    = "tcp"
     cidr_blocks = slice(data.aws_ip_ranges.us_east_ip_range.cidr_blocks, 0, 50)
-  }
 
-  provisioner "local-exec" {
-    command = "echo ${data.aws_ip_ranges.us_east_ip_range.cidr_blocks} >> my_secgroup_ips.txt"
+    provisioner "local-exec" {
+      command = "echo ${cidr_blocks} >> my_secgroup_ips.txt"
+    }
+
   }
 
   tags = {
