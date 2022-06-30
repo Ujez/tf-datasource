@@ -17,10 +17,3 @@ resource "aws_security_group" "sg-custom_us_east" {
     CreateDate = data.aws_ip_ranges.us_east_ip_range.create_date
     SyncToken  = data.aws_ip_ranges.us_east_ip_range.sync_token
   }
-    provisioner "local-exec" {
-    command = "echo ${aws_security_group.sg-custom_us_east.ingress} >> my_cidr_ips.txt"
-  }
-}
-output "ingres" {
-  value = aws_security_group.sg-custom_us_east.ingress
-}
