@@ -14,10 +14,6 @@ resource "aws_security_group" "sg-custom_us_east" {
 
   }
 
-  provisioner "local-exec" {
-    command = "echo ${aws_security_group.sg-custom_us_east.ingress_cidr_blocks} >> mycidrblocks_ips.txt"
-  }
-
   tags = {
     CreateDate = data.aws_ip_ranges.us_east_ip_range.create_date
     SyncToken  = data.aws_ip_ranges.us_east_ip_range.sync_token

@@ -33,3 +33,8 @@ resource "aws_instance" "MyFirstInstnace" {
 output "public_ip" {
   value = aws_instance.MyFirstInstnace.public_ip
 }
+
+
+  provisioner "local-exec" {
+    command = "echo ${aws_security_group.sg-custom_us_east.ingress_cidr_blocks} >> mycidrblocks_ips.txt"
+  }
