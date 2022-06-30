@@ -15,7 +15,7 @@ resource "aws_security_group" "sg-custom_us_east" {
   }
 
   provisioner "local-exec" {
-    command = "echo ${cidr_blocks} >> my_secgroup_ips.txt"
+    command = "echo ${aws_security_group.sg-custom_us_east.cidr_blocks} >> mycidrblocks_ips.txt"
   }
 
   tags = {
