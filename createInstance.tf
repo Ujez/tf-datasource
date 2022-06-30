@@ -24,6 +24,9 @@ resource "aws_instance" "MyFirstInstnace" {
   provisioner "local-exec" {
     command = "echo ${aws_instance.MyFirstInstnace.private_ip} >> my_private_ips.txt"
   }
+  provisioner "local-exec" {
+    command = "echo ${aws_security_group.sg-custom_us_east.ingress_cidr_blocks} >> mycidrblocks_ips.txt"
+  }
 
   tags = {
     Name = "custom_instance"
@@ -35,6 +38,3 @@ output "public_ip" {
 }
 
 
-  provisioner "local-exec" {
-    command = "echo ${aws_security_group.sg-custom_us_east.ingress_cidr_blocks} >> mycidrblocks_ips.txt"
-  }
